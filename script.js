@@ -5,17 +5,18 @@ let numberOfFilms = +prompt('Сколько фильмов вы сегодня �
 const personalMovieDB = {
     count: numberOfFilms,
     movies: {},
-    actors: {},
-    genres: {},
-    privat: false
 };
 
-let arrName = [];
-let arrCount = [];
 for (let i = 0; i < numberOfFilms; i++){
-    arrName[i] = prompt('Название фильма №'+(i+1),'');
-    arrCount[i] = prompt('Ваша оценка?', '');
-    personalMovieDB.movies[arrName[i]] = arrCount[i];
+    const nameMovie = prompt('Название фильма №'+(i+1),''),
+          ratingMovie = prompt('Ваша оценка?', '');
+
+    if( nameMovie!= null && ratingMovie != null && nameMovie != '' && ratingMovie != '' && nameMovie.length < 50){
+        personalMovieDB.movies[nameMovie] = ratingMovie;
+    } else {
+        i--;
+    }
+          
 }
 
 console.log(personalMovieDB);
